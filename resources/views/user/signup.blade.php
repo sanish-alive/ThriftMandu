@@ -10,32 +10,53 @@
 
 <div style="margin-top: 70px" class = "center">
 	<h1>Sign Up</h1>
-	<form action="#" method="post">
+	@if(Session::has('success'))
+		<center><p style="align-items: center; color: green">{{ Session::get('success') }}</p></center>
+	@endif
+	@if(Session::has('fail'))
+		<center><p style="align-items: center; color: red">{{ Session::get('fial') }}</p></center>
+	@endif
+	<form action="{{ route('user-signup') }}" method="post">
 		@csrf
 		<div class="txt_field">
 			<input type="text" name="username" >
 			<span></span>
-			<label>User Name</label>
+			<label>
+				User Name
+				<span style="color: red;">: @error('username') {{ $message }} @enderror</span>
+			</label>
 		</div>
 		<div class="txt_field">
 			<input type="text" name="email">
 			<span></span>
-			<label>Email</label>
+			<label>
+				Email
+				<span style="color: red;">: @error('email') {{ $message }} @enderror</span>
+			</label>
 		</div>
 		<div class="txt_field">
 			<input type="text" name="address">
 			<span></span>
-			<label>Address</label>
+			<label>
+				Address
+				<span style="color: red;">: @error('address') {{ $message }} @enderror</span>
+			</label>
 		</div>
 		<div class="txt_field">
-			<input type="text" name="phone">
+			<input type="text" name="contact">
 			<span></span>
-			<label>Phone no</label>
+			<label>
+				Phone no
+				<span style="color: red;">: @error('contact') {{ $message }} @enderror</span>
+			</label>
 		</div>
 		<div class="txt_field">
 			<input type="password" name='password'>
 			<span></span>
-			<label>Password</label>
+			<label>
+				Password
+				<span style="color: red;">: @error('password') {{ $message }} @enderror</span>
+			</label>
 		</div><div class="txt_field">
 			<input type="password" name="password_confirmation">
 			<span></span>

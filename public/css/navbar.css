@@ -1,4 +1,4 @@
-.navbar {
+body .nav-bar {
     overflow: hidden;
     background-color: whitesmoke;
     position: fixed;
@@ -8,7 +8,7 @@
     z-index: 100;
 }
 
-.navbar a {
+body .nav-bar a {
     float: left;
     display: block;
     color: black;
@@ -20,10 +20,10 @@
     transition: 0.3s;
 }
 
-.navbar a.right {
+body .nav-bar a.right {
     float: right;
 }
 
-.navbar a:hover {
+body .nav-bar a:hover {
     color: rgb(231, 105, 168);
 }

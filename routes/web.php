@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +16,17 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('product.home');
-})->name('home');
+Route::controller(AuthController::class)->group(function() {
+    Route::get('/login', 'showSignin')->name('signin');
+    Route::post('/login/authenticate', 'validateUser')->name('user-signin');
 
-Route::get('/login', [AuthController::class, 'showSignin'])->name('signin');
+    Route::get('/signup', 'showSignup')->name('signup');
+    Route::post('/registration', 'userRegister')->name('user-signup');
+    
+    Route::get('/user/logout', 'logout')->name('user-logout');
+});
 
-Route::get('/signup', [AuthController::class, 'showSignup'])->name('signup');
+Route::get('/', [ProductController::class, 'home'])->name('home');
+
+
+Route::get('/user/profile', [UserController::class, 'profile'])->name('profile');

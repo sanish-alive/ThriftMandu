@@ -10,16 +10,26 @@
 
 <div class = "center">
 	<h1>Login</h1>
-	<form action="#" method="post">
+	@if(Session::has('fail'))
+		<center><p style="color: red">{{ Session::get('fail') }}</p></center>
+	@endif
+	<form action="{{ route('user-signin') }}" method="post">
 		@csrf
 		<div class="txt_field">
 			<input type="text" name="email">
-			<label>Email</label>
+			<span></span>
+			<label>
+				Email
+				<span style="color: red;">: @error('email') {{ $message }} @enderror</span>
+			</label>
 		</div>
 		<div class="txt_field">
 			<input type="password" name="password">
 			<span></span>
-			<label>Password</label>
+			<label>
+				Password
+				<span style="color: red;">: @error('password') {{ $message }} @enderror</span>
+			</label>
 		</div>
 		<input type="submit" name="submit">
 		<div class="signup_link">Not a member? <a href="{{ route('signup') }}">Sign Up</a>
