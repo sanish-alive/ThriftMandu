@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/productCreate.css') }}">
-    <title>Admin</title>
-</head>
-<body>
+@extends('admin.adminLayout')
+
+@section('head')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/productCreate.css') }}">
+@endsection
+
+@section('content')
 <section class="container">
   <header>Product Form</header>
   @if(Session::has('success'))
@@ -83,5 +81,5 @@
 @foreach ($errors->all() as $error)
   <p>{{ $error }}</p>
 @endforeach
-</body>
-</html>
+
+@endsection

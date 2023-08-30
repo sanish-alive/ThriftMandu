@@ -10,10 +10,11 @@
 <body>
     <div class="nav-bar">
         <a href="{{ route('home') }}">Home</a>
-        <a href="#">Clothing</a>
-        <a href="#">Accessories</a>
-        <a href="#">Bags</a>
-        <a href="#">Shoes</a>
+        <a href="{{ route('product-card', ['name'=>'clothing']) }}">Clothing</a>
+        <a href="{{ route('product-card', ['name'=>'accessories']) }}">Accessories</a>
+        <a href="{{ route('product-card', ['name'=>'bags']) }}">Bags</a>
+        <a href="{{ route('product-card', ['name'=>'shoes']) }}">Shoes</a>
+        <a href="{{ route('product-card', ['name'=>'other']) }}">Other</a>
         @if(Auth::check())
             <a class="right" href="{{ route('user-logout') }}">Logout</a>
             <a class="right" href="{{ route('signin') }}">My Cart</a> 

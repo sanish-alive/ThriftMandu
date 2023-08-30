@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
@@ -26,13 +27,30 @@ Route::controller(AuthController::class)->group(function() {
     Route::get('/user/logout', 'logout')->name('user-logout');
 });
 
-Route::get('/', [ProductController::class, 'home'])->name('home');
+Route::controller(UserController::class)->group(function() {
+    Route::get('/', 'home')->name('home');
+    Route::get('/product/{name}', 'productCard')->name('product-card');
+});
+
+
 
 
 Route::get('/user/profile', [UserController::class, 'profile'])->name('profile');
 
-Route::prefix('admin/product')->group(function() {
-    Route::get('/create', [ProductController::class, 'createProduct'])->name('create-product');
-    Route::post('/store', [ProductController::class, 'storeProduct'])->name('store-product');
+Route::prefix('/admin')->group(function() {
+    Route::get('/login', function() {
+        return view('admin.login');
+    })->name('admin-login');
+
+    Route::any('/', [AdminController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('/product/view/{name}', [AdminController::class, 'adminProductCard'])->name('admin-product-view');
+    Route::get('/proudct/create', [ProductController::class, 'createProduct'])->name('create-product');
+    Route::post('/product/store', [ProductController::class, 'storeProduct'])->name('store-product');
+
+    Route::get('/user', [AdminController::class, 'userList'])->name('user-list');
+
+    Route::get('/recommend', [AdminController::class, 'recommend'])->name('recommend');
+    Route::get('/recommend/add/{id}', [AdminController::class, 'addRecommend'])->name('add-recommend');
 });
 

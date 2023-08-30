@@ -10,11 +10,7 @@ use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
-    public function home() {
-        return view('product.home');
-    }
-
-    public function createProduct() {
+        public function createProduct() {
         return view('product.create');
     }
 
@@ -59,4 +55,5 @@ class ProductController extends Controller
             return back()->with('fail', 'Product Insertion Failed');
         }
     }
+    
 }

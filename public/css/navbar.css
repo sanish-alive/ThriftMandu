@@ -1,7 +1,11 @@
+body {
+    margin: 0;
+
+}
 body .nav-bar {
     overflow: hidden;
     background-color: whitesmoke;
-    position: fixed;
+    position: sticky;
     padding: 10px;
     top: 0;
     width: 100%;
