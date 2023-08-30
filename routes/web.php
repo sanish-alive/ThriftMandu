@@ -30,3 +30,9 @@ Route::get('/', [ProductController::class, 'home'])->name('home');
 
 
 Route::get('/user/profile', [UserController::class, 'profile'])->name('profile');
+
+Route::prefix('admin/product')->group(function() {
+    Route::get('/create', [ProductController::class, 'createProduct'])->name('create-product');
+    Route::post('/store', [ProductController::class, 'storeProduct'])->name('store-product');
+});
+
