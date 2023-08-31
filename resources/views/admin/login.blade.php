@@ -13,7 +13,7 @@
 	@if(Session::has('fail'))
 		<center><p style="color: red">{{ Session::get('fail') }}</p></center>
 	@endif
-	<form action="{{ route('user-signin') }}" method="post">
+	<form action="{{ route('admin-login-validate') }}" method="post">
 		@csrf
 		<div class="txt_field">
 			<input type="text" name="email">

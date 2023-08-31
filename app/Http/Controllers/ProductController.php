@@ -22,7 +22,7 @@ class ProductController extends Controller
             'gender' => 'required',
             'description' => 'required',
             'category' => 'required',
-            'productImage' => 'required|mimes:jpeg,png,jpg,gif,svg|max:5048',
+            'productImage' => 'required|mimes:jpeg,png,jpg,gif,svg,webp|max:5048',
             'state' => 'required',
         ]);
         
@@ -54,6 +54,20 @@ class ProductController extends Controller
         } else {
             return back()->with('fail', 'Product Insertion Failed');
         }
+    }
+
+    public function deleteProduct($id) {
+        $product = Product::where('product_id', $id)->first();
+        
+        $fileDeletion = Storage::disk('public')->delete('productImage/'.$product->image);
+
+        if($product && $fileDeletion) {
+            $deletion = Product::where('product_id', $id)->delete();
+            if($deletion) {
+                return back()->with('success', 'Product is deleted successfully');
+            }
+        }
+        return back()->with('fail', 'Product deletion is failed');
     }
     
 }

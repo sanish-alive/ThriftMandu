@@ -15,7 +15,7 @@
         <a href="{{ route('admin-product-view', ['name'=>'bags']) }}">Bags</a>
         <a href="{{ route('admin-product-view', ['name'=>'shoes']) }}">Shoes</a>
         <a href="{{ route('admin-product-view', ['name'=>'other']) }}">Other</a>
-        <a class="right" href="">Logout</a>
+        <a class="right" href="{{ route('admin-logout') }}">Logout</a>
         <a class="right" href="{{ route('recommend') }}">Recommend</a>
         <a class="right" href="{{ route('create-product') }}">Add Product</a> 
         <a class="right" href="{{ route('user-list') }}">Users</a> 

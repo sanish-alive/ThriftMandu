@@ -9,6 +9,10 @@ use App\Models\Recommend;
 
 class AdminController extends Controller
 {
+    public function __construct() {
+        $this->middleware('adminAuth');
+    }
+    
     public function dashboard() {
         return view('admin.dashboard');
     }
@@ -43,5 +47,15 @@ class AdminController extends Controller
         }
         return redirect()->route('recommend')
         ->with('fail', 'Product is failed to added in recommendation');
+    }
+
+    public function removeRecommend($id) {
+        $deleteRecommend = Recommend::where('product_id', $id)->delete();
+        if($deleteRecommend) {
+            return redirect()->route('recommend')
+            ->with('success', 'Product is removed from recommend');
+        }
+        return redirect()->route('recommend')
+        ->with('fail', 'Product remove is failed');
     }
 }

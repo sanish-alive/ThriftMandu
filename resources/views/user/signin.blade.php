@@ -10,6 +10,9 @@
 
 <div class = "center">
 	<h1>Login</h1>
+	@if(Session::has('success'))
+		<center><p style="color: green">{{ Session::get('success') }}</p></center>
+	@endif
 	@if(Session::has('fail'))
 		<center><p style="color: red">{{ Session::get('fail') }}</p></center>
 	@endif
