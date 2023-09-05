@@ -6,7 +6,7 @@
 
 @section('content')
 
-<h2 style="text-align:center; text-transform: capitalize;">{{ $name }}</h2>
+<h2 style="text-align:center; text-transform: capitalize;">My Cart</h2>
 <center>
 @if(Session::has('success'))
 <span style="text-align: center; color: green">{{ Session::get('success') }}</span>
@@ -17,20 +17,21 @@
 </center>
 <div class="container">
     <!-- Replicate the below card div multiple times to see rows of cards -->
-    @foreach ($product_list as $product)
+    @foreach ($cart_list as $cart)
     <div class="card">
-        <img src="{{ asset('storage/productImage/'.$product->image) }}" alt="{{ $product->name }}">
-        <h1 id="name">{{ $product->name }}</h1>
-        <p class="price">Rs{{ $product->price }}</p>
-        <p class="state">{{ $product->state }}</p>
-        <p id="description">{{ $product->description }}</p>
+        <img src="{{ asset('storage/productImage/'.$cart->image) }}" alt="{{ $cart->name }}">
+        <h1 id="name">{{ $cart->name }}</h1>
+        <p class="price">Rs{{ $cart->price }}</p>
+        <p class="state">{{ $cart->state }}</p>
+        <p id="description">{{ $cart->description }}</p>
         <p style="margin:0;">
-            <button 
-            onclick="location.href = `{{ route('add-cart', ['productid'=>$product->product_id]) }}`;"
-            style="background-color: forestgreen; border-radius: 0 0 10px 10px;">
-            Add To Cart
-        </button>
-    </p>
+            <button
+            onclick="location.href = `{{ route('remove-cart', ['cartid'=>$cart->cart_id]) }}`;""
+            style="background-color: red;">
+            Remove
+            </button>
+        </p>
+        <p style="margin:0;"><button style="background-color: forestgreen; border-radius: 0 0 10px 10px;">Buy</button></p>
     </div>
     @endforeach
     <!-- ... -->
