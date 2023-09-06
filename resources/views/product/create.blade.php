@@ -7,6 +7,16 @@
 @section('content')
 <section class="container">
   <header>Product Form</header>
+  
+  <span style="color: red">
+  @if($errors->any())
+  <ul>
+    @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+    @endforeach
+  </ul>
+  </span>
+  @endif
   @if(Session::has('success'))
     <p style="color: green;">{{ Session::get('success') }}</p>
   @endif
@@ -51,7 +61,7 @@
         <input required="" placeholder="Enter description" type="text" name="description">
         <div class="column">
           <div class="select-box">
-            <select name="category">
+           <select name="category">
               <option hidden="">Category</option>
               <option value="clothing">Clothing</option>
               <option value="accessories">Accessories</option>
@@ -61,7 +71,7 @@
             </select>
           </div>
           <div style="width: 800px;">
-            <input required="" type="file" name="productImage">
+          <input required="" type="file" name="productImage">
           </div>
         </div>
       </div>

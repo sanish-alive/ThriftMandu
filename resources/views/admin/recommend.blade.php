@@ -21,7 +21,7 @@
 <div class="container">
     <!-- Replicate the below card div multiple times to see rows of cards -->
     @foreach ($recommend_list as $recommend)
-    <div class="card">
+    <div class="card" onclick="location.href = `{{ route('admin-product-indi', ['id'=>$recommend->product_id]) }}`;">
         <img src="{{ asset('storage/productImage/'.$recommend->image) }}" alt="{{ $recommend->name }}">
         <h1 id="name">{{ $recommend->name }}</h1>
         <p class="price">Rs{{ $recommend->price }}</p>

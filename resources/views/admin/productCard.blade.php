@@ -11,7 +11,7 @@
 <div class="container">
     <!-- Replicate the below card div multiple times to see rows of cards -->
     @foreach ($product_list as $product)
-    <div class="card">
+    <div class="card" onclick="location.href = `{{ route('admin-product-indi', ['id'=>$product->product_id]) }}`;">
         <img src="{{ asset('storage/productImage/'.$product->image) }}" alt="Denim Jeans">
         <h1 id="name">{{ $product->name }}</h1>
         <p class="price">Rs{{ $product->price }}</p>

@@ -58,4 +58,9 @@ class AdminController extends Controller
         return redirect()->route('recommend')
         ->with('fail', 'Product remove is failed');
     }
+
+    public function viewProduct($id) {
+        $product = Product::where('product_id', $id)->first();
+        return view('admin.productView', ['product_detail' => $product]);
+    }
 }

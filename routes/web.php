@@ -46,6 +46,8 @@ Route::get('/user/profile', [UserController::class, 'profile'])
 ->middleware('userAuth')
 ->name('profile');
 
+Route::get('product/individual/{id}', [ProductController::class, 'viewProduct'])->name('product-view-indi');
+
 Route::prefix('/admin')->group(function() {
     Route::get('/login', [AuthController::class, 'adminLogin'])->name('admin-login');
     Route::post('/login/validate', [AuthController::class, 'adminloginValidate'])->name('admin-login-validate');
@@ -73,5 +75,6 @@ Route::prefix('/admin')->group(function() {
     Route::get('/recommend', [AdminController::class, 'recommend'])->name('recommend');
     Route::get('/recommend/add/{id}', [AdminController::class, 'addRecommend'])->name('add-recommend');
     Route::get('/recommend/remove/{id}', [AdminController::class, 'removeRecommend'])->name('remove-recommend');
+    Route::get('product/individual/{id}', [AdminController::class, 'viewProduct'])->name('admin-product-indi');
 });
 

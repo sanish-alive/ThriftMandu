@@ -17,7 +17,7 @@
         <a href="{{ route('product-card', ['name'=>'other']) }}">Other</a>
         @if(Auth::check())
             <a class="right" href="{{ route('user-logout') }}">Logout</a>
-            <a class="right" href="{{ route('signin') }}">My Cart</a> 
+            <a class="right" href="{{ route('user-cart') }}">My Cart</a> 
             <a class="right" href="{{ route('profile') }}">Profile</a> 
         @else
             <a class="right" href="{{ route('signup') }}">Sign Up</a>
