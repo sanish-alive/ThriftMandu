@@ -11,12 +11,14 @@
 <div class="container">
     <!-- Replicate the below card div multiple times to see rows of cards -->
     @foreach ($product_list as $product)
-    <div class="card" onclick="location.href = `{{ route('admin-product-indi', ['id'=>$product->product_id]) }}`;">
-        <img src="{{ asset('storage/productImage/'.$product->image) }}" alt="Denim Jeans">
+    <div class="card">
+    <a style="text-decoration: none;color: inherit;" href="{{ route('admin-product-indi', ['id'=>$product->product_id]) }}">
+        <img src="{{ asset('productImage/'.$product->image) }}" alt="Denim Jeans">
         <h1 id="name">{{ $product->name }}</h1>
         <p class="price">Rs{{ $product->price }}</p>
         <p class="state">{{ $product->state }}</p>
         <p id='description'>{{ $product->description }}</p>
+    </a>
         <p style="margin:0;"><button 
             onclick="location.href = `{{ route('add-recommend', ['id'=>$product->product_id]) }}`;" 
             style="background-color: blueviolet;">

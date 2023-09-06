@@ -22,13 +22,17 @@
 <div class="container">
     <!-- Replicate the below card div multiple times to see rows of cards -->
     @foreach ($recommend_list as $recommend)
-    <div class="card" onclick="location.href = `{{ route('product-view-indi', ['id'=>$recommend->product_id]) }}`;">
-	<img src="{{ asset('storage/productImage/'.$recommend->image) }}" alt="{{ $recommend->name }}">
+    <div class="card">
+	<a style="text-decoration: none;color: inherit;" href="{{ route('product-view-indi', ['id'=>$recommend->product_id]) }}">
+	<img src="{{ asset('productImage/'.$recommend->image) }}" alt="{{ $recommend->name }}">
 		<h1 id="name">{{ $recommend->name }}</h1>
         <p class="price">Rs{{ $recommend->price }}</p>
         <p class="state">{{ $recommend->state }}</p>
         <p id="description">{{ $recommend->description }}</p>
-        <p style="margin:0;"><button style="background-color: forestgreen; border-radius: 0 0 10px 10px;">+ Add To Cart</button></p>
+	</a>
+        <p style="margin:0;"><button 
+		onclick="location.href = `{{ route('add-cart', ['productid'=>$recommend->product_id]) }}`;"
+		style="background-color: forestgreen; border-radius: 0 0 10px 10px;">+ Add To Cart</button></p>
     </div>
     @endforeach
     <!-- ... -->
@@ -41,7 +45,7 @@
 				<h3>Clothing</h3>
 					@foreach($clothing_list as $clothing)
 					<div class="product" onclick="location.href = `{{ route('product-view-indi', ['id'=>$clothing->product_id]) }}`;">
-						<img src="{{ asset('storage/productImage/'.$clothing->image) }}">
+						<img src="{{ asset('productImage/'.$clothing->image) }}">
                         <div class="productText">
 							<p>{{ $clothing->name }}</p>
 							<p>Rs{{ $clothing->price }}</p>
@@ -56,7 +60,7 @@
 				<h3>Accessories</h3>
 				@foreach($accessories_list as $accessories)
 				<div class="product" onclick="location.href = `{{ route('product-view-indi', ['id'=>$accessories->product_id]) }}`;">
-					<img src="{{ asset('storage/productImage/'.$accessories->image) }}">
+					<img src="{{ asset('productImage/'.$accessories->image) }}">
 					<div class="productText">
 						<p>{{ $accessories->name }}</p>
 						<p>Rs{{ $accessories->price }}</p>
@@ -71,7 +75,7 @@
 				<h3>Bags</h3>
 				@foreach($bags_list as $bags)
 				<div class="product" onclick="location.href = `{{ route('product-view-indi', ['id'=>$bags->product_id]) }}`;">
-					<img src="{{ asset('storage/productImage/'.$bags->image) }}">
+					<img src="{{ asset('productImage/'.$bags->image) }}">
 					<div class="productText">
 						<p>{{ $bags->name }}</p>
 						<p>Rs{{ $bags->price }}</p>
@@ -86,7 +90,7 @@
 				<h3>Shoes</h3>
 				@foreach($shoes_list as $shoes)
 				<div class="product" onclick="location.href = `{{ route('product-view-indi', ['id'=>$shoes->product_id]) }}`;">
-					<img src="{{ asset('storage/productImage/'.$shoes->image) }}">
+					<img src="{{ asset('productImage/'.$shoes->image) }}">
 					<div class="productText">
 						<p>{{ $shoes->name }}</p>
 						<p>Rs{{ $shoes->price }}</p>
@@ -101,7 +105,7 @@
 				<h3>Other</h3>
 				@foreach($other_list as $other)
 				<div class="product" onclick="location.href = `{{ route('product-view-indi', ['id'=>$other->product_id]) }}`;">
-					<img src="{{ asset('storage/productImage/'.$other->image) }}">
+					<img src="{{ asset('productImage/'.$other->image) }}">
 					<div class="productText">
 						<p>{{ $other->name }}</p>
 						<p>Rs{{ $other->price }}</p>

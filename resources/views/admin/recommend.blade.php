@@ -21,12 +21,14 @@
 <div class="container">
     <!-- Replicate the below card div multiple times to see rows of cards -->
     @foreach ($recommend_list as $recommend)
-    <div class="card" onclick="location.href = `{{ route('admin-product-indi', ['id'=>$recommend->product_id]) }}`;">
-        <img src="{{ asset('storage/productImage/'.$recommend->image) }}" alt="{{ $recommend->name }}">
+    <div class="card">
+    <a style="text-decoration: none;color: inherit;" href="{{ route('product-view-indi', ['id'=>$recommend->product_id]) }}">
+        <img src="{{ asset('productImage/'.$recommend->image) }}" alt="{{ $recommend->name }}">
         <h1 id="name">{{ $recommend->name }}</h1>
         <p class="price">Rs{{ $recommend->price }}</p>
         <p class="state">{{ $recommend->state }}</p>
         <p id="description">{{ $recommend->description }}</p>
+    </a>
         <p style="margin:0;"><button onclick="location.href = `{{ route('remove-recommend', ['id'=>$recommend->product_id]) }}`;" style="background-color: blueviolet;">- Remove Recommend</button></p>
         <p style="margin:0;"><button style="background-color: green;">Update</button></p>
         <p style="margin:0;"><button onclick="location.href = `{{ route('delete-product', ['id'=>$recommend->product_id]) }}`;" style="background-color: red;border-radius: 0 0 10px 10px;">Delete</button></p>

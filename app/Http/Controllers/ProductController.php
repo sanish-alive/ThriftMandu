@@ -33,7 +33,7 @@ class ProductController extends Controller
             $image = $request->file('productImage');
             $extension = $image->extension();
             $imageName = Str::random(10, 'alpha_num').".".$extension;
-            $destinationPath = public_path('storage/productImage');
+            $destinationPath = public_path('productImage');
             $store = $image->move($destinationPath, $imageName);
             if(!$store){
                 return back()->with('fail', 'Image Store Failed');
@@ -74,7 +74,7 @@ class ProductController extends Controller
     public function deleteProduct($id) {
         $product = Product::where('product_id', $id)->first();
 
-        $imagePath = public_path('storage/productImage/'.$product->image);
+        $imagePath = public_path('productImage/'.$product->image);
         if(file_exists($imagePath)){
             unlink($imagePath);
         }

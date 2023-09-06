@@ -13,7 +13,7 @@
     <div id="productCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('storage/productImage/'.$product_detail->image) }}" alt="Product 1" class="d-block mx-auto" style="border-radius: 15px;">
+                <img src="{{ asset('productImage/'.$product_detail->image) }}" alt="Product 1" class="d-block mx-auto" style="border-radius: 15px;">
                 <h3 class="text-center">{{ $product_detail->name }}</h3>
                 <p class="text-center">Rs {{ $product_detail->price }}</p>
                 <p class="text-center">Purchased Date: {{ $product_detail->purchased_at }}</p>
@@ -39,11 +39,13 @@
     <!-- Replicate the below card div multiple times to see rows of cards -->
     @foreach ($recommend_list as $recommend)
     <div class="card">
-	<img src="{{ asset('storage/productImage/'.$recommend->image) }}" alt="{{ $recommend->name }}">
+	<img src="{{ asset('productImage/'.$recommend->image) }}" alt="{{ $recommend->name }}">
+    <a style="text-decoration: none;color: inherit;" href="{{ route('product-view-indi', ['id'=>$recommend->product_id]) }}">
 		<h1 style="font-size: 28px;font-weight:bold" id="name">{{ $recommend->name }}</h1>
         <p class="price">Rs{{ $recommend->price }}</p>
         <p class="state">{{ $recommend->state }}</p>
         <p id="description">{{ $recommend->description }}</p>
+    </a>
         <p style="margin:0;">
             <button 
             onclick="location.href = `{{ route('add-cart', ['productid'=>$recommend->product_id]) }}`;"

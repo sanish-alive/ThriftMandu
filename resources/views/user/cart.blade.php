@@ -18,13 +18,15 @@
 <div class="container">
     <!-- Replicate the below card div multiple times to see rows of cards -->
     @foreach ($cart_list as $cart)
-    <div class="card" onclick="location.href = `{{ route('product-view-indi', ['id'=>$cart->product_id]) }}`;">
-        <img src="{{ asset('storage/productImage/'.$cart->image) }}" alt="{{ $cart->name }}">
+    <div class="card">
+    <a style="text-decoration: none;color: inherit;" href="{{ route('product-view-indi', ['id'=>$cart->product_id]) }}">
+        <img src="{{ asset('productImage/'.$cart->image) }}" alt="{{ $cart->name }}">
         <h1 id="name">{{ $cart->name }}</h1>
         <p class="price">Rs{{ $cart->price }}</p>
         <p class="state">{{ $cart->state }}</p>
         <p id="description">{{ $cart->description }}</p>
         <p style="margin:0;">
+    </a>    
             <button
             onclick="location.href = `{{ route('remove-cart', ['cartid'=>$cart->cart_id]) }}`;""
             style="background-color: red;">

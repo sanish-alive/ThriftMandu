@@ -34,9 +34,9 @@ Route::controller(UserController::class)->group(function() {
     Route::get('/', 'home')->name('home');
     Route::get('/product/{name}', 'productCard')->name('product-card');
 
-    Route::get('/cart', 'showCart')->name('user-cart');
-    Route::get('/cart/add/{productid}', 'addCart')->name('add-cart');
-    Route::get('/cart/remove/{cartid}', 'removeCart')->name('remove-cart');
+    Route::get('/cart', 'showCart')->name('user-cart')->middleware('userAuth');
+    Route::get('/cart/add/{productid}', 'addCart')->name('add-cart')->middleware('userAuth');
+    Route::get('/cart/remove/{cartid}', 'removeCart')->name('remove-cart')->middleware('userAuth');
 });
 
 
